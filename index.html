@@ -874,7 +874,10 @@ async function downloadMLoSTemplate(type) {
            + '<formula1>"High,Medium,Low,Non-Endemic"</formula1></dataValidation>';
     }).join('');
     var block = '<dataValidations count="' + endIdx.length + '">' + dvs + '</dataValidations>';
-    if (xml.indexOf('<pageMargins') !== -1) { xml = xml.replace('<pageMargins', block + '<pageMargins'); }
+    // dataValidations must precede ignoredErrors / pageMargins in the worksheet schema,
+    // otherwise Excel treats the file as corrupt and strips content on repair.
+    if (xml.indexOf('</sheetData>') !== -1) { xml = xml.replace('</sheetData>', '</sheetData>' + block); }
+    else if (xml.indexOf('<pageMargins') !== -1) { xml = xml.replace('<pageMargins', block + '<pageMargins'); }
     else { xml = xml.replace('</worksheet>', block + '</worksheet>'); }
     zip.file(sheetPath, xml);
     var blob = await zip.generateAsync({type:'blob', mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
