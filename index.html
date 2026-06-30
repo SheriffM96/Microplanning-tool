@@ -10,8 +10,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --green-900:#1B4332;--green-800:#1B5E3B;--green-700:#2D6A4F;--green-600:#40916C;
-  --green-400:#74C69D;--green-100:#D8F3DC;--green-50:#F0FAF3;
+  --green-900:#0B3A66;--green-800:#2C6693;--green-700:#1565C0;--green-600:#1976D2;
+  --green-400:#4DA3E0;--green-100:#D6E7F7;--green-50:#EFF5FC;
   --amber:#F4A526;--red:#D62839;--sand:#F7F6F2;--border:#E4E8E0;
   --text:#1A1F16;--muted:#6B7568;--light:#FAFBF9;
 }
@@ -142,18 +142,61 @@ tr:hover td{background:var(--light)}
 <nav class="site-nav">
   <div class="nav-brand">MDA Microplan <span>v2.0</span></div>
   <div class="nav-tabs">
-    <button class="nav-tab active" onclick="goTo(0)"><span class="step-n">1</span>Projected Population</button>
-    <button class="nav-tab" onclick="goTo(1)"><span class="step-n">2</span>Parameters</button>
-    <button class="nav-tab" onclick="goTo(2)"><span class="step-n">3</span>MLoS Upload</button>
-    <button class="nav-tab" onclick="goTo(3)"><span class="step-n">4</span>Microplan</button>
-    <button class="nav-tab" onclick="goTo(4)"><span class="step-n">5</span>Rationalization</button>
-    <button class="nav-tab" onclick="goTo(5)"><span class="step-n">6</span>Summary & Export</button>
-    <button class="nav-tab" onclick="goTo(6)"><span class="step-n">7</span>Daily Impl. Plan</button>
+    <button class="nav-tab active" onclick="goTo(0)"><span class="step-n" style="background:var(--amber)">i</span>Guide</button>
+    <button class="nav-tab" onclick="goTo(1)"><span class="step-n">1</span>Projected Population</button>
+    <button class="nav-tab" onclick="goTo(2)"><span class="step-n">2</span>Parameters</button>
+    <button class="nav-tab" onclick="goTo(3)"><span class="step-n">3</span>MLoS Upload</button>
+    <button class="nav-tab" onclick="goTo(4)"><span class="step-n">4</span>Microplan</button>
+    <button class="nav-tab" onclick="goTo(5)"><span class="step-n">5</span>Rationalization</button>
+    <button class="nav-tab" onclick="goTo(6)"><span class="step-n">6</span>Summary & Export</button>
+    <button class="nav-tab" onclick="goTo(7)"><span class="step-n">7</span>Daily Impl. Plan</button>
   </div>
 </nav>
 
 <!-- ══════════════════════════════════════════════ STEP 1: PROJECTED POP -->
-<div class="section active" id="sec0">
+<div class="section active" id="sec-guide">
+  <div class="page-title">User Guide</div>
+  <div class="page-sub">Start here. This explains what the tool does, how to move through it, and how to turn its outputs into a campaign you can run in the field.</div>
+
+  <div class="card">
+    <div class="card-title">What this tool is for</div>
+    <div style="font-size:13.5px;line-height:1.7;color:#1F3340">
+      <p style="margin-bottom:10px">This tool builds a Mass Drug Administration (MDA) microplan for neglected tropical disease campaigns, and runs entirely in your browser. It replaces the Excel microplanning workbook.</p>
+      <p style="margin-bottom:10px">It supports Onchocerciasis, Lymphatic Filariasis, Schistosomiasis, Soil-Transmitted Helminths and Trachoma, in any combination for a single campaign. You use it to size drug and Community Drug Distributor (CDD) needs for every settlement, reconcile those needs against the NPC projected population and the medicines you will actually receive, and produce the daily plan each facility follows during the campaign.</p>
+      <p style="margin:0">Everything happens on your device. No data is sent to a server. You save your work using the Excel and image downloads in each section.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">How to move through it</div>
+    <ol style="margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:#1F3340">
+      <li style="margin-bottom:9px"><strong>Projected Population.</strong> Pick the state, LGAs and wards, download the template, fill the NPC projected population for each ward, and upload it back.</li>
+      <li style="margin-bottom:9px"><strong>Parameters.</strong> Select the diseases for this campaign and set the age breakdown, drug doses, campaign days, CDD ratios and endemicity targeting. Your disease selection decides which columns appear everywhere else, so set this before downloading templates.</li>
+      <li style="margin-bottom:9px"><strong>MLoS Upload.</strong> Download the Master List of Settlements template, fill it in the field, and upload it. Endemicity is a dropdown, so entries stay clean.</li>
+      <li style="margin-bottom:9px"><strong>Microplan.</strong> The tool computes the target population, drug quantities and CDDs for every settlement, showing only the diseases you selected.</li>
+      <li style="margin-bottom:9px"><strong>Rationalization.</strong> Settlement populations are reconciled to the NPC projection and to the medicines available. Read this section carefully, because it is where shortfalls and surpluses are resolved.</li>
+      <li style="margin-bottom:9px"><strong>Summary and Export.</strong> Download the plan aggregated by settlement, facility, ward and LGA, using the rationalized figures.</li>
+      <li style="margin:0"><strong>Daily Implementation Plan.</strong> View and download the day by day schedule each facility follows, as Excel or as an image to share with field staff.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <div class="card-title">How to use the outputs to plan and run the MDA</div>
+    <div style="font-size:13.5px;line-height:1.7;color:#1F3340">
+      <p style="margin-bottom:10px">The <strong>microplan</strong> is the raw need from your ground enumeration. It tells you how many people, drugs and CDDs each settlement implies before any adjustment.</p>
+      <p style="margin-bottom:10px">The <strong>rationalization</strong> is the figure you plan and order against. Where the NPC allocation is short of the enumerated population, targets scale down and the gap is flagged as a deficit. Where the NPC figure is higher than what you counted, targets are capped at the people actually enumerated, a buffer is retained, and the rest is redistributed to deficit facilities in the same LGA. The Comments column and the facility and LGA summaries show exactly what moved and what is still short, so you can request a top up before the campaign starts.</p>
+      <p style="margin-bottom:10px">The <strong>summaries</strong> give you the quantification to hand to the supply chain and to brief LGA and ward teams, broken down to whatever level you need.</p>
+      <p style="margin:0">The <strong>Daily Implementation Plan</strong> is the field document. Share the image for each facility so CDDs and supervisors know which settlements to cover each day and how much medicine to carry.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-ok" style="margin-bottom:18px">Tip: select your diseases in the Parameters step before downloading any template, so the templates and every output match this campaign.</div>
+
+  <button class="btn btn-primary" onclick="goTo(1)">Start with Projected Population →</button>
+</div>
+
+
+<div class="section" id="sec0">
   <div class="page-title">Projected Population</div>
   <div class="page-sub">Select State → LGAs → Wards. Download the pre-filled template, add NPoP values, and upload.</div>
 
@@ -908,7 +951,7 @@ function confirmPP(){
   S.ppConfirmed = true;
   var btn = document.getElementById('pp-confirm-btn');
   if(btn){ btn.textContent = '✓ ' + ppTableRows.length + ' wards confirmed'; btn.style.background = 'var(--green-600)'; }
-  setTimeout(function(){ goTo(1); }, 200);
+  setTimeout(function(){ goTo(2); }, 200);
 }
 
 function confirmMLoS() {
@@ -968,20 +1011,20 @@ function r2(n){ return Math.round(n*100)/100; }
 // ═══════════════════════════════════════ DISEASE SELECTION & DYNAMIC PARAMS
 
 const DISEASE_CONFIG = {
-  oncho:    { label:'Onchocerciasis (Oncho)', short:'Oncho', full:'Onchocerciasis', color:'#2D6A4F', endemicityKey:'oncho',
+  oncho:    { label:'Onchocerciasis (Oncho)', short:'Oncho', full:'Onchocerciasis', color:'#1565C0', endemicityKey:'oncho',
               mlosCols:['Endemicity Oncho'], totalCol:'Oncho Total', cddCol:'CDDs Oncho',
               drugFields:[{id:'p-ivm', label:'Ivermectin (Oncho)', default:2.8, drugCol:'Ivermectin (Oncho)', base:'Ivermectin'}] },
-  lf:       { label:'Lymphatic Filariasis (LF)', short:'LF', full:'Lymphatic Filariasis', color:'#1B5E3B', endemicityKey:'lf',
+  lf:       { label:'Lymphatic Filariasis (LF)', short:'LF', full:'Lymphatic Filariasis', color:'#00897B', endemicityKey:'lf',
               mlosCols:['Endemicity LF'], totalCol:'LF Total', cddCol:'CDDs LF',
               drugFields:[{id:'p-ivm-lf', label:'Ivermectin (LF)', default:2.8, drugCol:'Ivermectin (LF)', base:'Ivermectin'},
                           {id:'p-alb-lf', label:'Albendazole (LF)', default:1, drugCol:'Albendazole (LF)', base:'Albendazole'}] },
-  schisto:  { label:'Schistosomiasis (Schisto)', short:'Schisto', full:'Schistosomiasis', color:'#40916C', endemicityKey:'schisto',
+  schisto:  { label:'Schistosomiasis (Schisto)', short:'Schisto', full:'Schistosomiasis', color:'#8E24AA', endemicityKey:'schisto',
               mlosCols:['Endemicity Schisto'], totalCol:'Schisto Total', cddCol:'CDDs Schisto',
               drugFields:[{id:'p-pzq', label:'Praziquantel (Schisto)', default:2.6, drugCol:'Praziquantel (Schisto)', base:'Praziquantel'}] },
-  sth:      { label:'Soil-Transmitted Helminths (STH)', short:'STH', full:'Soil-Transmitted Helminths', color:'#74C69D', endemicityKey:'sth',
+  sth:      { label:'Soil-Transmitted Helminths (STH)', short:'STH', full:'Soil-Transmitted Helminths', color:'#F57C00', endemicityKey:'sth',
               mlosCols:['Endemicity STH'], totalCol:'STH Total', cddCol:'CDDs STH',
               drugFields:[{id:'p-meb', label:'Mebendazole (STH)', default:1, drugCol:'Mebendazole (STH)', base:'Mebendazole'}] },
-  trachoma: { label:'Trachoma', short:'Trachoma', full:'Trachoma', color:'#95D5B2', endemicityKey:'trachoma',
+  trachoma: { label:'Trachoma', short:'Trachoma', full:'Trachoma', color:'#C2185B', endemicityKey:'trachoma',
               mlosCols:['Endemicity Trachoma'], totalCol:'Trachoma Total', cddCol:'CDDs Trachoma',
               drugFields:[{id:'p-azith', label:'Azithromycin (Trachoma)', default:1, drugCol:'Azithromycin (Trachoma)', base:'Azithromycin'}] },
 };
@@ -1157,7 +1200,7 @@ function confirmParams() {
   S.selectedDiseases = sel;
   document.getElementById('params-confirm-note').textContent =
     '✓ ' + sel.map(d => DISEASE_CONFIG[d].short).join(', ') + ' — parameters saved';
-  goTo(2);
+  goTo(3);
 }
 
 function generateMicroplan() {
@@ -1218,7 +1261,7 @@ function generateMicroplan() {
   renderRationalization();
   renderExport();
   renderDIP();
-  goTo(3);
+  goTo(4);
 }
 
 function renderMicroplan() {
@@ -1254,7 +1297,7 @@ function renderMicroplan() {
     + '<div class="card-title">Settlement Microplan (MLoS Populations) <span class="badge">'+data.length+' rows</span>'
     + '<div style="margin-left:auto;display:flex;gap:8px">'
     + '<button class="btn btn-primary btn-sm" onclick="downloadMicroplanXLSX()">⬇ Full Microplan (Excel)</button>'
-    + '<button class="btn btn-outline btn-sm" onclick="goTo(4)">View Rationalization →</button>'
+    + '<button class="btn btn-outline btn-sm" onclick="goTo(5)">View Rationalization →</button>'
     + '</div></div>'
     + '<div class="tbl-wrap scroll-y"><table>'
     + '<thead><tr>'+cols.map(function(c){ return '<th>'+c+'</th>'; }).join('')+'</tr></thead>'
@@ -1402,7 +1445,7 @@ function renderRationalization() {
   ['Nº','LGA','Ward','Facility','Settlement'].forEach(function(c){GROUP[c]='id';});
   GROUP['Microplan Population']='mp'; GROUP['Adjusted Population (NPC-based)']='adj'; GROUP['% of Microplan Pop. Coverable']='pct';
   drugCols.forEach(function(c){GROUP[c]='drug';}); cddCols.forEach(function(c){GROUP[c]='cdd';}); GROUP['Comments']='note';
-  var GC={id:{bg:'#F0F2EE',color:'#4A5247'},mp:{bg:'#EAF4FB',color:'#1A5276'},adj:{bg:'#F4ECF7',color:'#6C3483'},pct:{bg:'#FEF9E7',color:'#7D6608'},drug:{bg:'#FDEDEC',color:'#922B21'},cdd:{bg:'#EAF7F0',color:'#1B5E3B'},note:{bg:'#FFF8EC',color:'#7A4800'}};
+  var GC={id:{bg:'#F0F2EE',color:'#4A5247'},mp:{bg:'#EAF4FB',color:'#1A5276'},adj:{bg:'#F4ECF7',color:'#6C3483'},pct:{bg:'#FEF9E7',color:'#7D6608'},drug:{bg:'#FDEDEC',color:'#922B21'},cdd:{bg:'#E0F2F1',color:'#00796B'},note:{bg:'#FFF8EC',color:'#7A4800'}};
   var COLS=['Nº','LGA','Ward','Facility','Settlement','Microplan Population','Adjusted Population (NPC-based)','% of Microplan Pop. Coverable'].concat(drugCols,cddCols,['Comments']);
   var theadHtml=COLS.map(function(c){var g=GC[GROUP[c]]||GC.id;return '<th style="background:'+g.bg+';color:'+g.color+';padding:7px 10px;white-space:nowrap;border-right:1px solid #ddd;font-size:11px;font-weight:700;position:sticky;top:0;z-index:2">'+c+'</th>';}).join('');
   var PREVIEW=50;
@@ -1422,7 +1465,7 @@ function renderRationalization() {
     +'</div>'
     +'<div class="card" style="margin-bottom:16px;background:var(--green-50);border-color:var(--green-400)">'
     +'<div class="card-title">What these two indicators mean</div>'
-    +'<div style="font-size:12.5px;color:#33402f;line-height:1.6">'
+    +'<div style="font-size:12.5px;color:#1F3340;line-height:1.6">'
     +'<p style="margin-bottom:8px"><strong>Microplan coverage of NPC pop. ('+covMPofNPC.toFixed(1)+'%)</strong> — the microplan (settlement) population divided by the NPC projected population. It shows how much of the official projection your ground enumeration accounts for. Below 100% means you counted fewer people than the projection expects.</p>'
     +'<p><strong>NPC coverage of microplan pop. ('+covNPCofMP.toFixed(1)+'%)</strong> — the NPC projected population divided by the microplan population. Because medicines are allocated against the NPC figure, this shows how far that allocation stretches across the people you actually counted. Below 100% means the NPC-based allocation will not cover everyone enumerated, so the targets need to be rationalized.</p>'
     +'</div></div>';
@@ -1450,7 +1493,7 @@ function renderRationalization() {
     var RCOLS=['LGA','Facility','Medicine','Status','Enumerated Need','NPC Allocation','Surplus','Buffer Kept','Redistributed Out','Held','Deficit','Received','Still Short'];
     var rhead=RCOLS.map(function(c){return '<th style="background:#F0F2EE;color:#4A5247;padding:7px 10px;white-space:nowrap;font-size:11px;font-weight:700;position:sticky;top:0">'+c+'</th>';}).join('');
     var rbody=reconRows.map(function(row){
-      var col = row.Status==='Surplus' ? '#1B5E3B' : '#922B21';
+      var col = row.Status==='Surplus' ? '#2C6693' : '#922B21';
       return '<tr>'+RCOLS.map(function(c){var v=row[c];var num=typeof v==='number';
         return '<td style="padding:6px 10px;border-top:1px solid #F5F6F3;font-size:12px;white-space:nowrap;'+(num?'text-align:right;':'')+(c==='Status'?'font-weight:700;color:'+col:'')+'">'+(num?v.toLocaleString():v)+'</td>';}).join('')+'</tr>';
     }).join('');
@@ -1468,7 +1511,7 @@ function renderRationalization() {
     var LCOLS=['LGA','Medicine','Required (enumerated)','NPC Allocation','Net (Allocation - Required)','Surplus','Buffer Kept','Redistributed (within LGA)','Held','Still Short','Status'];
     var lhead=LCOLS.map(function(c){return '<th style="background:#EAF4FB;color:#1A5276;padding:7px 10px;white-space:nowrap;font-size:11px;font-weight:700;position:sticky;top:0">'+c+'</th>';}).join('');
     var lbody=lgaRows.map(function(row){
-      var shortish = row['Still Short']>0.5; var col = shortish ? '#922B21' : '#1B5E3B';
+      var shortish = row['Still Short']>0.5; var col = shortish ? '#922B21' : '#2C6693';
       return '<tr>'+LCOLS.map(function(c){var v=row[c];var num=typeof v==='number';
         return '<td style="padding:6px 10px;border-top:1px solid #F5F6F3;font-size:12px;white-space:nowrap;'+(num?'text-align:right;':'')+(c==='Status'?'font-weight:700;color:'+col:'')+'">'+(num?v.toLocaleString():v)+'</td>';}).join('')+'</tr>';
     }).join('');
@@ -1761,7 +1804,7 @@ function buildDIP() {
           +'</tr>';
       });
       var dpop=chunk.reduce(function(s,r){return s+dipPop(r,isRat);},0);
-      html+='<tr style="background:#F0FAF3;font-weight:700"><td colspan="3" style="text-align:right">Day '+(d+1)+' Total</td>'
+      html+='<tr style="background:#EFF5FC;font-weight:700"><td colspan="3" style="text-align:right">Day '+(d+1)+' Total</td>'
         +'<td style="text-align:right">'+Math.round(dpop).toLocaleString()+'</td>'
         + drugCols.map(function(c){var t=chunk.reduce(function(s,r){return s+(r[c]||0);},0);return '<td style="text-align:right">'+Math.round(t).toLocaleString()+'</td>';}).join('')
         +'</tr>';
